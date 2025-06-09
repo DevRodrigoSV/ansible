@@ -20,6 +20,8 @@ pipeline {
 
                 sshagent (credentials: ['amazon-linux-private-key']) {
                     sh 'ansible server1:server3 -i hosts -m ping -u ec2-user'
+
+                    sh 'ansible server1 -i hosts -a "cat /etc/os-release" -u ec2-user'
                 }
             }
         }
