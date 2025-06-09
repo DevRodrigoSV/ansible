@@ -8,10 +8,6 @@ pipeline {
     options {
         ansiColor('xterm')
     }
-    environment {
-        ANSIBLE_HOST_KEY_CHECKING = 'False'
-        JBOSS_CREDENTIALS = credentials('amazon-linux-private-key')
-    }
     stages {
         stage('ansible') {
             steps {
