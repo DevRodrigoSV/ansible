@@ -8,10 +8,22 @@ pipeline {
     options {
         ansiColor('xterm')
     }
+    environment {
+        ANSIBLE_HOST_KEY_CHECKING = 'False'
+        JBOSS_CREDENTIALS = credentials('amazon-linux-private-key')
+    }
     stages {
         stage('ansible') {
             steps {
                 sh 'ansible --version'
+                sh 'whoami'
+                sh 'env | sort'
+                sh 'cat /etc/ansible/hosts'
+                sh 'ansible-inventory --list -y'
+
+                //sshagent (credentials: ['amazon-linux-private-key']) {
+                //    
+                //}
             }
         }
     }   
